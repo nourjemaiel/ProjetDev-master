@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&family=Dancing+Script&display=swap');
+.logo img { 
+float: left; 
+height: 80px;
+width: 120px;
+}
+.header{
+	background-origin: #f0f0f0;
+}
+
+#logo{
+	display: flex;
+	flex-wrap: nowrap;
+justify-content: flex-end;
+}
+
+body {
+ font-family:"trebuchet ms",sans-serif;
+ font-size:90%;
+ }
+form {
+ background-color:#F7F7F7;
+ padding:10px;
+ width:280px;
+ border-radius: 20px;
+ filter:drop-shadow(5px 5px 5px #B8B8B8);
+ }
+fieldset {
+ padding:0 20px 20px 20px;
+ margin-bottom:10px;
+ }
+legend {
+ color:#1e81b0;
+ font-weight:bold;
+ font-size: 200%;
+ }
+label {
+ margin-top:10px;
+ display:block;
+ }
+label.inline {
+ display:inline;
+ margin-right:50px;
+ }
+input, textarea, select, option {
+ background-color:#EAF2F8;
+ }
+input, textarea, select {
+ padding:3px;
+ border:1px solid #A9CCE3;
+ border-radius:5px;
+ width:200px;
+ box-shadow:1px 1px 2px #A9CCE3 inset;
+ }
+select {
+ margin-top:10px;
+ }
+input[type=radio] {
+ width:20px;
+ }
+input[type=submit], input[type=reset] {
+ width:100px;
+ margin-left:5px;
+ box-shadow:1px 1px 1px #2980B9;
+ cursor:pointer;
+ }
+ input[type=submit]:hover, input[type=reset]:hover {
+ background-color:#2980B9;
+ }
+input[type=submit]:active, input[type=reset]:active {
+ background-color:#FCDEDE;
+ box-shadow:1px 1px 1px #2980B9 inset;
+}
+
+
+@media (min-width:62.75em) {
+	
+}
+#contenir{
+ display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content:space-between;
+	height:100%;
+	width:100%;
+
+}
+
+
+body{
+	font-family: 'Advent Pro', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+	text-align: center;
+	font-size: 1.5em;
+}
+h2{
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 30px;
+	font-size: 3em;
+}
+a{
+	text-decoration: none;
+	color: blue;
+}
+/****************navbar***********************/
+nav{
+	overflow: hidden;
+	background-color: #FFFFFF;
+	position: fixed;
+	width: 100%;
+	opacity: 0.9;
+}
+header li{
+	float: right;
+	font-size: 1.4em;
+	color: #c78412;
+}
+header li a{
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	padding: 10px 10px;
+}
+#logo{
+	font-family: 'Dancing Script', cursive;
+	font-weight: bold;
+	font-size: 200%;
+	float: left;
+}
+/******************image principale*****************/
+#imagePrincipale {
+	background: url(image/bib.webp) no-repeat fixed 50% 50%;
+	background-size: cover;
+	height: 799px;
+}
+h1{
+	font-family: 'Dancing Script', cursive;
+	text-align: center;
+	color: white;
+	font-size: 6em;
+	margin-top: 110px;
+	text-shadow: 1px 3px 2px black;
+}
+#premiertrait{
+	height: 1px;
+	width: 15%;
+	margin: -3px auto;
+	background-color: white;
+	box-shadow: 1px 3px 2px black;
+}
+h3{
+	text-align: center;
+	color: white;
+	font-size: 3em;
+	text-shadow: 1px 3px 2px black;
+}
+p{
+	font-family: serif;
+	font-size: 20px;
+}
+.error{
+	background:#F2DEDE;
+	color:#A94442;
+	padding: 10px;
+	width: 95%;
+	border-radius: 5px;
+	margin: 20px auto;
+}

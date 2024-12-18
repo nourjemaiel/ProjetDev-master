@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6A11CB, #2575FC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Form Container Styling */
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="file"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="file"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #6A11CB;
+            outline: none;
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(to right, #6A11CB, #2575FC);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #2575FC, #6A11CB);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        p a {
+            color: #2575FC;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+
+        <!-- Display Form -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error-message">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <label for="first_name">First Name</label>
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                    <div class="error-message">{{ form.first_name.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <label for="last_name">Last Name</label>
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                    <div class="error-message">{{ form.last_name.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="error-message">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <label for="adresse"></label>
+                {{ form.adresse }}
+                {% if form.adresse.errors %}
+                    <div class="error-message">{{ form.adresse.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <label for="password1">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="error-message">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <label for="password2">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="error-message">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="input-group">
+                <label for="profile_image">Profile Picture (optional)</label>
+                {{ form.profile_image }}
+                {% if form.profile_image.errors %}
+                    <div class="error-message">{{ form.profile_image.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <!-- Redirect to Login -->
+        <p>Already have an account? <a href="{% url 'login' %}">Log in here</a></p>
+    </div>
+</body>
+</html>

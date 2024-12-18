@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    
+    <!-- Inline CSS for styling -->
+    <style>
+        .book-details-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .book-cover-square {
+            flex: 0 0 30%;
+            aspect-ratio: 1 / 1;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-cover-square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-details {
+            flex: 1;
+        }
+
+        .form-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* Popup message style */
+.popup-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;  /* Hide by default */
+}
+
+.popup-message .message {
+  font-size: 16px;
+}
+
+
+    </style>
+</head>
+<body>
+    {% block content %}
+    {% if messages %}
+  <div id="success-popup" class="popup-message">
+    {% for message in messages %}
+      <div class="message">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+        <!-- Book Details -->
+        <div class="book-details-container">
+            <!-- Book Cover -->
+            <div class="book-cover-square">
+                <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
+            </div>
+
+            <!-- Book Details -->
+            <div class="book-details">
+                <h2 class="card-title">{{ book.title }}</h2>
+                <h4>{{ book.author }}</h4>
+                <h4>{{ book.genre }}</h4>
+                <p class="card-text">{{ book.description }}</p>
+
+                <!-- Book Rating -->
+                <p>Rating: 
+                    {% for i in full_stars %}
+                        <span>★</span>
+                    {% endfor %}
+                    {% for i in empty_stars %}
+                        <span>☆</span>
+                    {% endfor %}
+                </p>
+
+                <!-- Price -->
+                <h5>${{ book.prix }}</h5>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+            </div>
+        </div>
+
+        
+
+        <!-- Rating and Comment Section -->
+        <!-- Rating and Comment Section -->
+<div class="form-section">
+    <h3>Rate or Comment on this Book</h3>
+    <form method="post" action="{% url 'create_review' book.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <!-- Rating Input -->
+        <label for="rating">Rate this book (1 to 5):</label>
+        <select name="rating" id="rating" class="form-control" required>
+            <option value="">Select a rating</option>
+            <option value="1">1 ★</option>
+            <option value="2">2 ★★</option>
+            <option value="3">3 ★★★</option>
+            <option value="4">4 ★★★★</option>
+            <option value="5">5 ★★★★★</option>
+        </select>
+    
+        <!-- Comment Input -->
+        <label for="texte">Write a comment:</label>
+        <textarea name="texte" id="texte" rows="4" class="form-control" placeholder="Share your thoughts..." required></textarea>
+    
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+</div>
+
+        
+    <script>
+        window.onload = function() {
+          const popup = document.getElementById('success-popup');
+          if (popup) {
+            popup.style.display = 'block';  // Show the popup
+            setTimeout(function() {
+              popup.style.display = 'none';  // Hide after 5 seconds
+            }, 5000);
+          }
+        };
+      </script>
+    {% endblock %}
+</body>
+</html>
